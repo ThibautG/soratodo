@@ -1,25 +1,31 @@
 <section class="global-section">
   <h2>Liste des tâches :</h2>
-  <button (click)="onResetTasks()">Vider la liste</button>
-  <table>
-    <thead>
-    <tr>
-      <th>Titre</th>
-      <!-- TODO : bouton pour afficher le détails -->
-      <th>Description</th>
-      <th>Status</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- TODO : cas où tableau est vide -->
-    <tr *ngFor="let task of tasks">
-      <td>{{ task.title }}</td>
-      <td>{{ task.description }}</td>
-      <td>{{ task.status }}</td>
-      <!-- TODO: confirmation avant suppression -->
-      <td><button (click)="onDeleteTask(task.id)">Supprimer</button></td>
-    </tr>
-    </tbody>
-  </table>
+
+  <div *ngIf="tasks.length === 0; else tasksTable">
+    <p>Aucune tâche pour le moment.</p>
+  </div>
+
+  <ng-template #tasksTable>
+    <button (click)="onResetTasks()">Vider la liste</button>
+    <table>
+      <thead>
+      <tr>
+        <th>Titre</th>
+        <!-- TODO : bouton pour afficher le détails -->
+        <th>Description</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.title }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.status }}</td>
+        <!-- TODO: confirmation avant suppression -->
+        <td><button (click)="onDeleteTask(task.id)">Supprimer</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-template>
 </section>
