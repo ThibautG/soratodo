@@ -33,6 +33,9 @@ export class TaskFormComponent {
         title: '',
         description: ''
       };
+
+      // on recharge la page pour mettre à jour affichage liste
+      window.location.reload();
     }
   }
 }

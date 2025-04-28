@@ -11,7 +11,7 @@
     </thead>
     <tbody>
     <!-- TODO : cas où tableau est vide -->
-    <tr *ngFor="let task of taskService.getTasks()">
+    <tr *ngFor="let task of tasks">
       <td>{{ task.title }}</td>
       <td>{{ task.description }}</td>
       <td>{{ task.status }}</td>
