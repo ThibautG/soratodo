@@ -9,15 +9,10 @@ const TASKS_KEY = 'soraToDoTasks';
 })
 
 export class TaskService {
-
-  // on crée un tableau vide pour stocker les tâches
+  // Création tableau vide pour stocker tâches
   private tasks: Task[] = [];
 
-  // on charge les tâches depuis le localStorage au démarrage du service
-  constructor() {
-    this.loadTasks();
-  }
-  // méthode pour charger les tâches depuis localStorage
+  // Charger tâches depuis localStorage
   private loadTasks() {
     const storedTasks = localStorage.getItem(TASKS_KEY);
     if (storedTasks) {
@@ -25,19 +20,26 @@ export class TaskService {
     }
     /*console.log(this.tasks)*/
   }
-  // méthode pour sauvegarder les tâches dans le localStorage
+  // Sauvegarder tâches dans le localStorage
   private saveTasks() {
     localStorage.setItem(TASKS_KEY, JSON.stringify(this.tasks));
   }
+  // Charger tâches depuis localStorage au démarrage du service
+  constructor() {
+    this.loadTasks();
+  }
 
-  // méthode pour récupérer la liste de tâches
+
+
+  // Récupérer liste des tâches
   getTasks(): Task[] {
     // on retourne une copie du tableau pour travailler plus proprement dessus
     return [...this.tasks];
   }
-  // méthode pour ajouter une tâche,
-  // on prend bien une Task en entrée, mais on omit l'id et le status,
-  // pas demandés dans le formulaire
+
+  // Ajouter une tâche,
+    // on prend bien une Task en entrée, mais on omit l'id et le status,
+    // pas demandés dans le formulaire
   addTask(task: Omit<Task, 'id' | 'status'>): void {
     /*console.log(task)*/
     // on ajoute id et status "à faire" à la tâche du formulaire
@@ -52,4 +54,11 @@ export class TaskService {
     // on sauvegarde la nouvelle liste dans localStorage
     this.saveTasks();
   }
+
+  // Supprimer un tâche
+  removeTask(taskId: string) {
+    this.tasks = this.tasks.filter(task => task.id !== taskId);
+    this.saveTasks();
+  }
+
 }
