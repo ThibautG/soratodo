@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Task} from '../../models/task';
 import {TaskService} from '../../services/task.service';
-import {LowerCasePipe, NgForOf, NgIf, TitleCasePipe} from '@angular/common';
+import {NgForOf, NgIf, TitleCasePipe} from '@angular/common';
 import {TaskDetailComponent} from '../task-detail/task-detail.component';
 
 @Component({
@@ -10,7 +10,6 @@ import {TaskDetailComponent} from '../task-detail/task-detail.component';
     NgForOf,
     NgIf,
     TitleCasePipe,
-    LowerCasePipe,
     TaskDetailComponent
   ],
   templateUrl: './task-list.component.html',
@@ -24,7 +23,7 @@ export class TaskListComponent implements OnInit{
   // on crée une instance du service TaskService
   constructor(private taskService: TaskService) {  }
 
-  // au chargement component on appelle la méthode getTasks
+  // au chargement component, on appelle la méthode getTasks
   ngOnInit() {
     this.refreshTasks();
     /*console.log(this.tasks)*/
@@ -60,15 +59,15 @@ export class TaskListComponent implements OnInit{
 
   // Modifier une tâche au click
   onModifyTask(taskId: string) {
-    // idée = au click on veut récupérer l'id et réutiliser le
+    // idée = au click, on veut récupérer l'id et réutiliser le
     // TaskFormComponent pour l'utiliser afin de modifier la tâche
     // correspondant à taskId
   }
 
   //Afficher les détails d'une tâche
-    // Variable pour stocker si détails sont ouverts ou fermés
+    // Variable pour stocker id si détails sont ouverts
   openedTaskId: string | null = null;
-    // méthode pour afficher détails au click
+    // méthode pour modifier openedTaskId au click
   onDisplayDetail(taskId: string): void {
     this.openedTaskId = (this.openedTaskId === taskId) ? null : taskId;
   }
