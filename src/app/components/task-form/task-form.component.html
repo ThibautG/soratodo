@@ -1,12 +1,13 @@
 <section class="global-section">
   <h2>Nouvelle tâche :</h2>
-  <form>
+  <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+    <!-- TODO: affichage conditionnel quand tâche ajoutée ou error -->
     <label for="title">Titre :</label>
     <input type="text" id="title" name="title"
-           placeholder="Titre" required>
+           [(ngModel)]="newTask.title" placeholder="Titre" required>
     <label for="description">Description :</label>
     <input type="text" id="description" name="description"
-           placeholder="Description" required>
-    <button type="submit">Ajouter</button>
+           [(ngModel)]="newTask.description" placeholder="Description">
+    <button type="submit" [disabled]="taskForm.invalid">Ajouter</button>
   </form>
 </section>
