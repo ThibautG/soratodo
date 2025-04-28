@@ -1,31 +1,35 @@
 <section class="global-section">
   <h2>Liste des tâches :</h2>
 
-  <div *ngIf="tasks.length === 0; else tasksTable">
+  <div *ngIf="tasks.length === 0; else tasksList">
     <p>Aucune tâche pour le moment.</p>
   </div>
 
-  <ng-template #tasksTable>
+  <ng-template #tasksList>
     <button (click)="onResetTasks()">Vider la liste</button>
-    <table>
-      <thead>
-      <tr>
-        <th>Titre</th>
-        <!-- TODO : bouton pour afficher le détails -->
-        <th>Description</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let task of tasks">
-        <td>{{ task.title }}</td>
-        <td>{{ task.description }}</td>
-        <td>{{ task.status }}</td>
-        <!-- TODO: confirmation avant suppression -->
-        <td><button (click)="onDeleteTask(task.id)">Supprimer</button></td>
-      </tr>
-      </tbody>
-    </table>
+
+    <ul class="task-list" *ngFor="let task of tasks">
+      <div class="task-list-inline">
+        <li>📍{{ task.title | titlecase }}</li>
+        <li>🔗{{ task.status }}</li>
+        <li>
+        <button (click)="onModifyTask(task.id)">🔧 Modifier</button>
+        </li>
+        <li>
+        <button (click)="onDeleteTask(task.id)">❌ Supprimer</button>
+        </li>
+      </div>
+      <div class="task-list-inline">
+        <li>
+          <button (click)="onDisplayDetail(task.id)">
+            {{ openedTaskId === task.id ? '❌ Masquer détails' : '📜 Afficher détails' }}
+          </button>
+        </li>
+        <li *ngIf="openedTaskId === task.id">
+          <app-task-detail [task]="task" />
+        </li>
+      </div>
+    </ul>
+
   </ng-template>
 </section>

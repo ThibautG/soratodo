@@ -1,13 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {Task} from '../../models/task';
 import {TaskService} from '../../services/task.service';
-import {NgForOf, NgIf} from '@angular/common';
+import {LowerCasePipe, NgForOf, NgIf, TitleCasePipe} from '@angular/common';
+import {TaskDetailComponent} from '../task-detail/task-detail.component';
 
 @Component({
   selector: 'app-task-list',
   imports: [
     NgForOf,
-    NgIf
+    NgIf,
+    TitleCasePipe,
+    LowerCasePipe,
+    TaskDetailComponent
   ],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss'
@@ -30,6 +34,18 @@ export class TaskListComponent implements OnInit{
     this.tasks = this.taskService.getTasks();
   }
 
+  // Supprimer toutes les tâches
+  onResetTasks() {
+    /* TODO: remplacer les confirmations par des pop-up */
+    const confirmation = window.confirm('Êtes-vous sûr de vouloir vider' +
+      ' toute votre liste ?')
+
+    if (confirmation) {
+      this.taskService.clearStoredTasks();
+      this.refreshTasks();
+    }
+  }
+
   // Supprimer une tâche au click
   onDeleteTask(taskId: string) {
     /* TODO: remplacer les confirmations par des pop-up */
@@ -42,15 +58,18 @@ export class TaskListComponent implements OnInit{
     }
   }
 
-  // Supprimer toutes les tâches
-  onResetTasks() {
-    /* TODO: remplacer les confirmations par des pop-up */
-    const confirmation = window.confirm('Êtes-vous sûr de vouloir vider' +
-      ' toute votre liste ?')
+  // Modifier une tâche au click
+  onModifyTask(taskId: string) {
+    // idée = au click on veut récupérer l'id et réutiliser le
+    // TaskFormComponent pour l'utiliser afin de modifier la tâche
+    // correspondant à taskId
+  }
 
-    if (confirmation) {
-      this.taskService.clearStoredTasks();
-      this.refreshTasks();
-    }
+  //Afficher les détails d'une tâche
+    // Variable pour stocker si détails sont ouverts ou fermés
+  openedTaskId: string | null = null;
+    // méthode pour afficher détails au click
+  onDisplayDetail(taskId: string): void {
+    this.openedTaskId = (this.openedTaskId === taskId) ? null : taskId;
   }
 }
