@@ -32,6 +32,7 @@ export class TaskListComponent implements OnInit{
 
   // Supprimer une tâche au click
   onDeleteTask(taskId: string) {
+    /* TODO: remplacer les confirmations par des pop-up */
     const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer' +
       ' cette tâche ?')
 
@@ -43,6 +44,7 @@ export class TaskListComponent implements OnInit{
 
   // Supprimer toutes les tâches
   onResetTasks() {
+    /* TODO: remplacer les confirmations par des pop-up */
     const confirmation = window.confirm('Êtes-vous sûr de vouloir vider' +
       ' toute votre liste ?')
 
