@@ -12,6 +12,10 @@ export class TaskService {
   // Création tableau vide pour stocker tâches
   private tasks: Task[] = [];
 
+  // Charger tâches depuis localStorage au démarrage du service
+  constructor() {
+    this.loadTasks();
+  }
   // Charger tâches depuis localStorage
   private loadTasks() {
     const storedTasks = localStorage.getItem(TASKS_KEY);
@@ -24,9 +28,11 @@ export class TaskService {
   private saveTasks() {
     localStorage.setItem(TASKS_KEY, JSON.stringify(this.tasks));
   }
-  // Charger tâches depuis localStorage au démarrage du service
-  constructor() {
-    this.loadTasks();
+  // Vider localStorage
+  clearStoredTasks(): void {
+    localStorage.removeItem(TASKS_KEY);
+    // on vide aussi le tableau en mémoire
+    this.tasks = [];
   }
 
 
@@ -35,6 +41,11 @@ export class TaskService {
   getTasks(): Task[] {
     // on retourne une copie du tableau pour travailler plus proprement dessus
     return [...this.tasks];
+  }
+
+  // Récupérer une tâche par son id
+  getTaskById (taskId: string): Task[] {
+    return this.tasks.filter(task => task.id === taskId);
   }
 
   // Ajouter une tâche,
@@ -54,6 +65,8 @@ export class TaskService {
     // on sauvegarde la nouvelle liste dans localStorage
     this.saveTasks();
   }
+
+  // Mettre à jour une tâche
 
   // Supprimer un tâche
   removeTask(taskId: string) {

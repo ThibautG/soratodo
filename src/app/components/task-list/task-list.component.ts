@@ -21,13 +21,23 @@ export class TaskListComponent implements OnInit{
 
   // au chargement component on appelle la méthode getTasks
   ngOnInit() {
-    this.tasks = this.taskService.getTasks();
+    this.refreshTasks();
     /*console.log(this.tasks)*/
+  }
+  // Refresh affichage liste par méthode getTasks
+  refreshTasks() {
+    this.tasks = this.taskService.getTasks();
   }
 
   // Supprimer une tâche au click
   onDeleteTask(taskId: string) {
     this.taskService.removeTask(taskId);
-    window.location.reload();
+    this.refreshTasks();
+  }
+
+  // Supprimer toutes les tâches
+  onResetTasks() {
+    this.taskService.clearStoredTasks();
+    this.refreshTasks();
   }
 }

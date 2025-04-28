@@ -1,5 +1,6 @@
 <section class="global-section">
   <h2>Liste des tâches :</h2>
+  <button (click)="onResetTasks()">Vider la liste</button>
   <table>
     <thead>
     <tr>
@@ -7,6 +8,7 @@
       <!-- TODO : bouton pour afficher le détails -->
       <th>Description</th>
       <th>Status</th>
+      <th>Actions</th>
     </tr>
     </thead>
     <tbody>
