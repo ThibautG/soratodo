@@ -23,7 +23,7 @@ export class TaskService {
     if (storedTasks) {
       this.tasks = JSON.parse(storedTasks);
     }
-    console.log(this.tasks)
+    /*console.log(this.tasks)*/
   }
   // méthode pour sauvegarder les tâches dans le localStorage
   private saveTasks() {
