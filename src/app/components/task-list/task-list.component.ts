@@ -32,13 +32,23 @@ export class TaskListComponent implements OnInit{
 
   // Supprimer une tâche au click
   onDeleteTask(taskId: string) {
-    this.taskService.removeTask(taskId);
-    this.refreshTasks();
+    const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer' +
+      ' cette tâche ?')
+
+    if (confirmation) {
+      this.taskService.removeTask(taskId);
+      this.refreshTasks();
+    }
   }
 
   // Supprimer toutes les tâches
   onResetTasks() {
-    this.taskService.clearStoredTasks();
-    this.refreshTasks();
+    const confirmation = window.confirm('Êtes-vous sûr de vouloir vider' +
+      ' toute votre liste ?')
+
+    if (confirmation) {
+      this.taskService.clearStoredTasks();
+      this.refreshTasks();
+    }
   }
 }
