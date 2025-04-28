@@ -1,10 +1,8 @@
-export class Task {
+import {TaskStatusType} from './task-status-type.type';
 
+export interface Task {
   id: string;
-
-  constructor(public title: string,
-              public  description: string,
-              public status: string) {
-    this.id = crypto.randomUUID().substring(0, 8);
-  }
+  title: string,
+  description: string,
+  status: TaskStatusType
 }
