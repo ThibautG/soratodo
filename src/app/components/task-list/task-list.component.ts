@@ -24,4 +24,10 @@ export class TaskListComponent implements OnInit{
     this.tasks = this.taskService.getTasks();
     /*console.log(this.tasks)*/
   }
+
+  // Supprimer une tâche au click
+  onDeleteTask(taskId: string) {
+    this.taskService.removeTask(taskId);
+    window.location.reload();
+  }
 }
