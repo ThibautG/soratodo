@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Task} from '../models/task';
+import {TaskStatusType} from '../models/task-status-type.type';
 
 // Clé pour stocker dans localStorage
 const TASKS_KEY = 'soraTodoTasks';
@@ -44,8 +45,8 @@ export class TaskService {
   }
 
   // Récupérer une tâche par son id
-  getTaskById (taskId: string): Task[] {
-    return this.tasks.filter(task => task.id === taskId);
+  getTaskById (taskId: string): Task {
+    return this.tasks.filter(task => task.id === taskId)[0];
   }
 
   // Ajouter une tâche,
@@ -66,6 +67,24 @@ export class TaskService {
   }
 
   // Mettre à jour une tâche
+  updateTask(
+    taskId: string,
+    updatedTask: {
+      title: string,
+      description: string,
+      status: TaskStatusType
+    }): void {
+    // on charge la tâche correspondant à taskID
+    const task = this.getTaskById(taskId);
+    if (task) {
+      // si j'ai bien récupéré un task alors, j'assigne les nouvelles valeurs
+      task.title = updatedTask.title;
+      task.description = updatedTask.description;
+      task.status = updatedTask.status
+      // on sauve cette nouvelle version de la tâche
+      this.saveTasks();
+    }
+  }
 
   // Supprimer un tâche
   removeTask(taskId: string) {
