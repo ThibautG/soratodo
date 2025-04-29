@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {TaskService} from '../../services/task.service';
 import {FormsModule} from '@angular/forms';
+import {TaskStatusType} from '../../models/task-status-type.type';
 
 @Component({
   selector: 'app-task-form',
@@ -12,10 +13,16 @@ import {FormsModule} from '@angular/forms';
 })
 export class TaskFormComponent {
   // on crée une tâche qui va recevoir ce qu'on entre dans le form
-  newTask = {
+  newTask: {
+    title: string;
+    description: string;
+    status: TaskStatusType;
+  } = {
     title: '',
-    description: ''
-  }
+    description: '',
+    status: 'à faire'
+  };
+
 
 
   // on appelle les services pour utiliser addTask
@@ -31,7 +38,8 @@ export class TaskFormComponent {
       // on réinitialise le formulaire
       this.newTask = {
         title: '',
-        description: ''
+        description: '',
+        status: 'à faire'
       };
 
       // on recharge la page pour mettre à jour affichage liste

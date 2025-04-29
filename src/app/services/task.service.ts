@@ -49,16 +49,15 @@ export class TaskService {
   }
 
   // Ajouter une tâche,
-    // on prend bien une Task en entrée, mais on omit l'id et le status,
-    // pas demandés dans le formulaire
-  addTask(task: Omit<Task, 'id' | 'status'>): void {
+    // on prend une Task en entrée, on omit l'id pas demandé dans form
+  addTask(task: Omit<Task, 'id'>): void {
     /*console.log(task)*/
     // on ajoute id et status "à faire" à la tâche du formulaire
     // TODO : faire une vérification si id présent dans tasks
     const newTask: Task = {
       ...task,
-      id: crypto.randomUUID().substring(0, 8),
-      status: "à faire"
+      // TODO: fabriquer un id auto-incrémenté
+      id: crypto.randomUUID().substring(0, 8)
     };
     // on push le tout dans le tableau tasks
     this.tasks.push(newTask);

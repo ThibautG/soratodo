@@ -8,6 +8,12 @@
     <label for="description">Description :</label>
     <input type="text" id="description" name="description"
            [(ngModel)]="newTask.description" placeholder="Description">
+    <label for="status">Status</label>
+    <select name="status" id="status" [(ngModel)]="newTask.status">
+      <option value="à faire">à faire</option>
+      <option value="en cours">en cours</option>
+      <option value="terminée">terminée</option>
+    </select>
     <button type="submit" [disabled]="taskForm.invalid">Ajouter</button>
   </form>
 </section>
