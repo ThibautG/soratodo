@@ -1,1 +1,8 @@
-<h1>SoraTodo</h1>
+<header>
+  <h1>SoraTodo</h1>
+  <nav>
+    <a routerLink="tasks/new" routerLinkActive="active">Nouvelle tâche</a>
+    <a routerLink="tasks" routerLinkActive="active"
+       [routerLinkActiveOptions]="{exact: true}">Liste des tâches</a>
+  </nav>
+</header>
