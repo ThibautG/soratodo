@@ -1,5 +1,5 @@
 <section class="global-section">
-  <h2>Nouvelle tâche :</h2>
+  <h2>{{ isEditMode ? 'Modifier la tâche' : 'Nouvelle tâche' }}</h2>
   <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
     <!-- TODO: affichage conditionnel quand tâche ajoutée ou error -->
     <label for="title">Titre :</label>
@@ -14,6 +14,8 @@
       <option value="en cours">en cours</option>
       <option value="terminée">terminée</option>
     </select>
-    <button type="submit" [disabled]="taskForm.invalid">Ajouter</button>
+    <button type="submit" [disabled]="taskForm.invalid">
+      {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+    </button>
   </form>
 </section>
