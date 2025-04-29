@@ -12,6 +12,7 @@ export const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'tasks', component: TaskListComponent},
   {path: 'tasks/new', component: TaskFormComponent},
-  {path: 'tasks/:id', component: TaskDetailComponent}
-  /* TODO: penser à la route /tasks/:id/edit : modification d’une tâche.*/
+  {path: 'tasks/:id', component: TaskDetailComponent},
+  {path: 'tasks/:id/edit', component: TaskFormComponent}
+  /* TODO: penser à utiliser route tasks/:id pour TaskDetailComponent */
 ];
