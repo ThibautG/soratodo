@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {TaskService} from '../../services/task.service';
 import {FormsModule} from '@angular/forms';
 import {TaskStatusType} from '../../models/task-status-type.type';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-task-form',
@@ -26,7 +27,10 @@ export class TaskFormComponent {
 
 
   // on appelle les services pour utiliser addTask
-  constructor(private taskService: TaskService) {  }
+  constructor(
+    private taskService: TaskService,
+    private router: Router
+    ) {  }
 
   // on crée une méthode pour ajouter la nouvelle tâche depuis le form
   onSubmit() {
@@ -42,8 +46,8 @@ export class TaskFormComponent {
         status: 'à faire'
       };
 
-      // on recharge la page pour mettre à jour affichage liste
-      window.location.reload();
+      // on navigue vers la route de la liste
+      this.router.navigateByUrl('tasks');
     }
   }
 }
