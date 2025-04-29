@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Task} from '../models/task';
 
 // Clé pour stocker dans localStorage
-const TASKS_KEY = 'soraToDoTasks';
+const TASKS_KEY = 'soraTodoTasks';
 
 @Injectable ({
   providedIn: 'root'
