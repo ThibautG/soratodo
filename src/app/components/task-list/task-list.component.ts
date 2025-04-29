@@ -3,6 +3,7 @@ import {Task} from '../../models/task';
 import {TaskService} from '../../services/task.service';
 import {NgForOf, NgIf, TitleCasePipe} from '@angular/common';
 import {TaskDetailComponent} from '../task-detail/task-detail.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -21,7 +22,10 @@ export class TaskListComponent implements OnInit{
 
 
   // on crée une instance du service TaskService
-  constructor(private taskService: TaskService) {  }
+  constructor(
+    private taskService: TaskService,
+    private router: Router
+    ) {  }
 
   // au chargement component, on appelle la méthode getTasks
   ngOnInit() {
@@ -59,9 +63,8 @@ export class TaskListComponent implements OnInit{
 
   // Modifier une tâche au click
   onModifyTask(taskId: string) {
-    // idée = au click, on veut récupérer l'id et réutiliser le
-    // TaskFormComponent pour l'utiliser afin de modifier la tâche
-    // correspondant à taskId
+    // au click on navigue vers la route de modif
+    this.router.navigateByUrl(`tasks/${taskId}/edit`)
   }
 
   //Afficher les détails d'une tâche
