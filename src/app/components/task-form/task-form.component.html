@@ -1,5 +1,12 @@
 <section class="global-section">
+  <!-- Message d'erreur si tâche non trouvée -->
+  <div *ngIf="taskNotFound" class="error-message">
+    <p>La tâche demandée n'existe pas.</p>
+    <p>Vous pouvez créer une nouvelle tâche ci-dessous !</p>
+  </div>
+  <!-- Affichage conditionnel du titre en fonction url -->
   <h2>{{ isEditMode ? 'Modifier la tâche' : 'Nouvelle tâche' }}</h2>
+  <!-- Message succès affiché si non null -->
   <div *ngIf="successMessage" class="success-message">
     {{ successMessage }}
   </div>
@@ -17,6 +24,7 @@
       <option value="en cours">en cours</option>
       <option value="terminée">terminée</option>
     </select>
+    <!-- Affichage conditionnel selon mode création ou modification -->
     <button type="submit" [disabled]="taskForm.invalid">
       {{ isEditMode ? 'Modifier' : 'Ajouter' }}
     </button>

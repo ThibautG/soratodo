@@ -33,6 +33,8 @@ export class TaskFormComponent implements OnInit{
   taskId: string | null = null;
   // variable pour stocker message d'ajout ou modif
   successMessage: string | null = null;
+  // booléen selon si tâche en url existe ou pas
+  taskNotFound: boolean = false;
 
   // on appelle les services
   constructor(
@@ -46,15 +48,24 @@ export class TaskFormComponent implements OnInit{
     this.taskId = this.route.snapshot.params['id'];
 
     if (this.taskId) {
+      // si il y a un id dans la route, on va chercher la tâche correspondante
       const  existingTask: Task = this.taskService.getTaskById(this.taskId);
 
       if (existingTask) {
+        // s'il y a une tâche correspondante, on vient charger ses
+        // propriétés dans newTask
         this.newTask = {
           title: existingTask.title,
           description: existingTask.description,
           status: existingTask.status
         };
+        // et on "valide" passage en "mode édition"
         this.isEditMode = true;
+      } else {
+        // s'il n'y a pas de tâche correspondante on switch taskNotFound
+        this.taskNotFound = true;
+        // et on repasse en "mode création"
+        this.isEditMode = false;
       }
     }
   }
