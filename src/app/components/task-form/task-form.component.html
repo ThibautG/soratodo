@@ -1,5 +1,8 @@
 <section class="global-section">
   <h2>{{ isEditMode ? 'Modifier la tâche' : 'Nouvelle tâche' }}</h2>
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
   <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
     <!-- TODO: affichage conditionnel quand tâche ajoutée ou error -->
     <label for="title">Titre :</label>
