@@ -1,59 +1,61 @@
-# Soratodo
+# Soratodo – Application de gestion de tâches
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+Ce projet a été généré en utilisant [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
 
-## Development server
+**SoraTodo** est une application web développée avec Angular permettant de gérer une liste de tâches de manière simple et efficace.
 
-To start a local development server, run:
+Ce projet a été réalisé dans le cadre d’un test technique pour démontrer la capacité à structurer une application Angular avec gestion d’état, services, routing et composants modulaires.
 
+## Fonctionnalités
+
+- Création, visualisation, modification et suppression de tâches
+- Gestion des statuts : **à faire**, **en cours**, **terminée**
+- Interface claire et formulaires validés
+- Confirmation avant suppression
+- Style personnalisé avec SCSS
+- Sauvegarde des tâches dans le `localStorage` du navigateur
+
+## Installation
+
+Assurez-vous d’avoir **Node.js** et **Angular CLI** installés sur votre machine.
+
+```bash
+npm install -g @angular/cli
+```
+
+Clonez le projet puis installez les dépendances :
+```bash
+git clone https://github.com/ThibautG/soratodo.git
+cd soratodo
+npm install
+```
+
+## Lancement de l'application
+Démarrez le serveur de développement avec :
 ```bash
 ng serve
 ```
+Puis rendez-vous sur [http://localhost:4200](http://localhost:4200) pour utiliser l'application.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Navigation
+L'application utilise le routing Angular avec les routes suivantes :
+- `/tasks` : liste des tâches
+- `/tasks/new` : création d’une tâche
+- `/tasks/:id` : détails d’une tâche
+- `/tasks/:id/edit` : modification d’une tâche
 
-## Code scaffolding
+## Structure du projet
+- `models/Task` : interface des tâches
+- `models/TaskStatusType` : type personnalisé pour restreindre les statuts possibles d'une tâche
+- `services/TaskService` : gestion des tâches en mémoire (avec stockage dans `localStorage`)
+- `components/Header` : composant d’en-tête avec navigation
+- `components/LandingPage` : page d’accueil de l’application
+- `components/TaskListComponent` : affichage de la liste
+- `components/TaskDetailComponent` : vue d’une tâche
+- `components/TaskFormComponent` : formulaire de création/édition
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Améliorations possibles
+Voici quelques pistes d'évolution si le projet devait être poussé plus loin :
+- Améliorer la responsivité pour mobile et tablettes
+- Remplacer `window.confirm()` par une pop-up de confirmation personnalisée
+- Appliquer du style dynamiquement avec `[ngStyle]` en fonction du statut de la tâche
