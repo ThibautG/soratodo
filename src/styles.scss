@@ -1,5 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
-
-* {
-  font-family: Roboto, Helvetica, sans-serif;
+/****** Variables CSS ******/
+:root {
+  --font-global : Roboto, Helvetica;
+  --color-black: #000000;
+  --color-blue-dark: #364455;
+  --color-blue-light: #568495;
+  --color-grey-dark: #666;
+  --color-grey-light: #F7F7F7;
+  --color-white: #FFFFFF;
 }
+
+body {
+  background-color: var(--color-grey-light);
+  font-family: var(--font-global), sans-serif;
+}
+
