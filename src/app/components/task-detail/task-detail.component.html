@@ -1,1 +1,24 @@
-<p>{{ task.description | lowercase }}</p>
+<section class="global-section">
+  <h2>Détails de la tâche :</h2>
+
+  <ul *ngIf="task; else taskerror" class="task-details">
+      <li>📍titre : {{ task.title | titlecase }}</li>
+      <li>📜description : {{ task.description || 'pas de description' }}</li>
+      <li>🔗status : {{ task.status }}</li>
+      <li>
+        <button (click)="onModifyTask(task.id)">🔧 Modifier</button>
+      </li>
+      <li>
+        <button (click)="onDeleteTask(task.id)">❌ Supprimer</button>
+      </li>
+  </ul>
+
+  <ng-template #taskerror>
+    <div>
+      <p>Cette tâche n'existe pas.</p>
+    </div>
+  </ng-template>
+
+  <a [routerLink]="['/tasks']">Retour à la liste des tâches.</a>
+
+</section>
