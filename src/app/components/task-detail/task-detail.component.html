@@ -2,7 +2,7 @@
   <h2>Détails de la tâche :</h2>
 
   <ul *ngIf="task; else taskerror" class="task-details global-box">
-    <li>📍 <span class="details">Titre : </span><span
+    <li>📌 <span class="details">Titre : </span><span
       class="task-title">{{ task.title }}</span></li>
       <li>📜 <span class="details">Description : </span>{{ task.description || 'pas de description' }}</li>
       <li>🔗 <span class="details">Statut : </span>{{ task.status }}</li>

@@ -8,8 +8,8 @@
 
   <ng-template #tasksList>
     <ul class="task-list global-box" *ngFor="let task of tasks">
-      <li>📍<span class="task-title">{{ task.title }}</span></li>
-        <li>🔗{{ task.status }}</li>
+      <li>📌 <span class="task-title">{{ task.title }}</span></li>
+        <li>🔗 {{ task.status }}</li>
         <li>
           <a [routerLink]="['/tasks', task.id]">
             Afficher détails
