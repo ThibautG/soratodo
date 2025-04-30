@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Task} from '../../models/task';
 import {TaskService} from '../../services/task.service';
 import {NgForOf, NgIf, TitleCasePipe} from '@angular/common';
-import {TaskDetailComponent} from '../task-detail/task-detail.component';
-import {Router} from '@angular/router';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -11,7 +10,7 @@ import {Router} from '@angular/router';
     NgForOf,
     NgIf,
     TitleCasePipe,
-    TaskDetailComponent
+    RouterLink
   ],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss'
@@ -24,7 +23,6 @@ export class TaskListComponent implements OnInit{
   // on crée une instance du service TaskService
   constructor(
     private taskService: TaskService,
-    private router: Router
     ) {  }
 
   // au chargement component, on appelle la méthode getTasks
@@ -51,7 +49,9 @@ export class TaskListComponent implements OnInit{
 
   // Supprimer une tâche au click
   onDeleteTask(taskId: string) {
-    /* TODO: remplacer les confirmations par des pop-up */
+    /* TODO: remplacer les confirmations par des pop-up
+    *   idée : une première méthode pour afficher une div qui contient le
+    *   bouton qui lui seulement appelle onDeleteTask */
     const confirmation = window.confirm('Êtes-vous sûr de vouloir supprimer' +
       ' cette tâche ?')
 
@@ -61,17 +61,4 @@ export class TaskListComponent implements OnInit{
     }
   }
 
-  // Modifier une tâche au click
-  onModifyTask(taskId: string) {
-    // au click on navigue vers la route de modif
-    this.router.navigateByUrl(`tasks/${taskId}/edit`)
-  }
-
-  //Afficher les détails d'une tâche
-    // Variable pour stocker id si détails sont ouverts
-  openedTaskId: string | null = null;
-    // méthode pour modifier openedTaskId au click
-  onDisplayDetail(taskId: string): void {
-    this.openedTaskId = (this.openedTaskId === taskId) ? null : taskId;
-  }
 }

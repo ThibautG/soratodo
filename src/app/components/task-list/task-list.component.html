@@ -3,6 +3,7 @@
 
   <div *ngIf="tasks.length === 0; else tasksList">
     <p>Aucune tâche pour le moment.</p>
+    <a [routerLink]="['new']">Entrez votre première tâche !</a>
   </div>
 
   <ng-template #tasksList>
@@ -13,20 +14,14 @@
         <li>📍{{ task.title | titlecase }}</li>
         <li>🔗{{ task.status }}</li>
         <li>
-        <button (click)="onModifyTask(task.id)">🔧 Modifier</button>
-        </li>
-        <li>
         <button (click)="onDeleteTask(task.id)">❌ Supprimer</button>
         </li>
       </div>
       <div class="task-list-inline">
         <li>
-          <button (click)="onDisplayDetail(task.id)">
-            {{ openedTaskId === task.id ? '❌ Masquer détails' : '📜 Afficher détails' }}
-          </button>
-        </li>
-        <li *ngIf="openedTaskId === task.id">
-          <app-task-detail [task]="task" />
+          <a [routerLink]="['/tasks', task.id]">
+            Afficher détails
+          </a>
         </li>
       </div>
     </ul>
