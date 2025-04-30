@@ -1,16 +1,168 @@
+/****** RESET CSS ******/
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+/* ---modif font-size du html pour utiliser rem en base 10--- */
+html {
+  font-size: 62.5%;
+}
+
+
 /****** Variables CSS ******/
 :root {
   --font-global : Roboto, Helvetica;
+  --font-size-body: 1.6rem;
+  --font-size-h1: 3.2rem;
+  --font-size-h2: 2.4rem;
+  --font-size-task-title: 2rem;
+  --font-size-task-details: 1.4rem;
   --color-black: #000000;
   --color-blue-dark: #364455;
   --color-blue-light: #568495;
   --color-grey-dark: #666;
+  --color-grey-medium: #eeeeee;
   --color-grey-light: #F7F7F7;
+  --color-shadow : lightgray;
   --color-white: #FFFFFF;
 }
 
 body {
   background-color: var(--color-grey-light);
   font-family: var(--font-global), sans-serif;
+  font-size: var(--font-size-body);
 }
 
+
+h1 {
+  padding-top: 3rem;
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h1, h2 {
+  color: var(--color-blue-dark);
+  padding-bottom: 3rem;
+}
+
+a {
+  color: var(--color-black);
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+button {
+  font-family: var(--font-global), sans-serif;
+  background-color: transparent;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  /*border: none;*/
+  border: 2px solid var(--color-grey-dark);
+  border-radius: 1rem;
+  box-shadow: var(--color-shadow) 3px 3px 7px;
+  margin-right: 20px;
+  outline: none;
+  font-size: 1.4rem;
+  font-weight: 500;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: translate(1px, 1px);
+    box-shadow: var(--color-shadow) 0 0 5px;
+  }
+}
+
+.global-section {
+  padding-inline: 30%;
+  padding-block: 3rem;
+}
+
+.global-box {
+  list-style: none;
+  background-color: var(--color-grey-medium);
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border: .5px solid var(--color-grey-dark);
+  border-radius: 1rem;
+  box-shadow: var(--color-shadow) 3px 3px 7px;
+}
+
+.task-title {
+  font-size: var(--font-size-task-title);
+}
+
+.details {
+  font-size: var(--font-size-task-details);
+  font-weight: bold;
+}
+
+.error-message {
+  background-color: #ffc0c0;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  border: .5px solid #800000;
+  border-radius: 1rem;
+  box-shadow: #ffb6b6 3px 3px 7px;
+}
+
+.success-message {
+  background-color: #bcffbc;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  border: .5px solid #004400;
+  border-radius: 1rem;
+  box-shadow: #baffba 3px 3px 7px;
+}

@@ -1,0 +1,16 @@
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    transform: scale(1.03);
+  }
+}
+
+.task-details {
+  li {
+    padding-block: .5rem;
+  }
+}
+
+

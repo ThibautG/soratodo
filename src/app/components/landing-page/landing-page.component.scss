@@ -1,4 +1,14 @@
 .landing-block{
+  padding-block: 3rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  a {
+    padding-top: 3rem;
+  }
+
+  img {
+
+  }
 }

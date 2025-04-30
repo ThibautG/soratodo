@@ -1,8 +1,40 @@
 .task-list {
-  list-style: none;
+  margin-bottom: 2rem;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  li {
+    padding-block: .5rem;
+
+    a {
+      font-size: 1.4rem;
+    }
+  }
+
+  li:last-of-type {
+    text-align: right;
+  }
 }
 
-.task-list-inline {
+.new-task-link{
   display: flex;
-  gap: 2rem;
+  padding-bottom: 3rem;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.reset-button-wrap {
+  text-align: right;
+}
+
+.empty-message {
+  a {
+    display: flex;
+    margin-top: 3rem;
+  }
 }

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TaskService} from '../../services/task.service';
 import {FormsModule} from '@angular/forms';
 import {TaskStatusType} from '../../models/task-status-type.type';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {Task} from '../../models/task';
 import {NgIf} from '@angular/common';
 
@@ -10,7 +10,8 @@ import {NgIf} from '@angular/common';
   selector: 'app-task-form',
   imports: [
     FormsModule,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './task-form.component.html',
   styleUrl: './task-form.component.scss'

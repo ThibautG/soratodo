@@ -1,30 +1,32 @@
 <section class="global-section">
-  <h2>Liste des tâches :</h2>
+  <h2>Liste des tâches</h2>
 
-  <div *ngIf="tasks.length === 0; else tasksList">
+  <div class="empty-message global-box" *ngIf="tasks.length === 0; else tasksList">
     <p>Aucune tâche pour le moment.</p>
     <a [routerLink]="['new']">Entrez votre première tâche !</a>
   </div>
 
   <ng-template #tasksList>
-    <button (click)="onResetTasks()">Vider la liste</button>
-
-    <ul class="task-list" *ngFor="let task of tasks">
-      <div class="task-list-inline">
-        <li>📍{{ task.title | titlecase }}</li>
+    <ul class="task-list global-box" *ngFor="let task of tasks">
+      <li>📍<span class="task-title">{{ task.title }}</span></li>
         <li>🔗{{ task.status }}</li>
-        <li>
-        <button (click)="onDeleteTask(task.id)">❌ Supprimer</button>
-        </li>
-      </div>
-      <div class="task-list-inline">
         <li>
           <a [routerLink]="['/tasks', task.id]">
             Afficher détails
           </a>
         </li>
-      </div>
+        <li>
+        <button (click)="onDeleteTask(task.id)">❌ Supprimer</button>
+        </li>
     </ul>
+
+    <a class="new-task-link" [routerLink]="['new']">➕ Nouvelle
+      tâche</a>
+
+    <div class="reset-button-wrap">
+      <button class="reset-button" (click)="onResetTasks()">🚮 Vider la
+        liste</button>
+    </div>
 
   </ng-template>
 </section>

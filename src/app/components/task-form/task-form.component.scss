@@ -1,4 +1,6 @@
 .required {
+  font-size: 1.4rem;
+  padding-top: 2rem;
   color: red;
 }
 
@@ -6,3 +8,43 @@
   font-weight: bold;
   font-size: 24px;
 }
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    transform: scale(1.03);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  label {
+    padding-bottom: 1rem;
+  }
+
+  input {
+    font-size: var(--font-size-body);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+    border: none;
+    border-radius: 1rem;
+  }
+
+  select {
+    font-size: var(--font-size-body);
+    margin-bottom: 3rem;
+    border-radius: 1rem;
+    padding-left: 1rem;
+    border: none;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+

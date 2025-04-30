@@ -10,23 +10,31 @@
   <div *ngIf="successMessage" class="success-message">
     {{ successMessage }}
   </div>
-  <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
-    <label for="title">Titre<span class="required asterisk">*</span> :</label>
-    <input type="text" id="title" name="title"
-           [(ngModel)]="newTask.title" placeholder="Titre" required>
-    <label for="description">Description :</label>
-    <input type="text" id="description" name="description"
-           [(ngModel)]="newTask.description" placeholder="Description">
-    <label for="status">Status</label>
-    <select name="status" id="status" [(ngModel)]="newTask.status">
-      <option value="à faire">à faire</option>
-      <option value="en cours">en cours</option>
-      <option value="terminée">terminée</option>
-    </select>
-    <!-- Affichage conditionnel selon mode création ou modification -->
-    <button type="submit" [disabled]="taskForm.invalid">
-      {{ isEditMode ? 'Modifier' : 'Ajouter' }}
-    </button>
-  </form>
-  <p class="required"><span class="asterisk">*</span> champs obligatoires</p>
+  <div class="global-box">
+    <form class="form" (ngSubmit)="onSubmit()" #taskForm="ngForm">
+      <label for="title">📍 Titre<span class="required asterisk">*</span> :
+      </label>
+      <input type="text" id="title" name="title"
+             [(ngModel)]="newTask.title" placeholder="Titre" required>
+      <label for="description">📜 Description :</label>
+      <input type="text" id="description" name="description"
+             [(ngModel)]="newTask.description" placeholder="Description">
+      <label for="status">🔗 Status</label>
+      <select name="status" id="status" [(ngModel)]="newTask.status">
+        <option value="à faire">à faire</option>
+        <option value="en cours">en cours</option>
+        <option value="terminée">terminée</option>
+      </select>
+      <!-- Affichage conditionnel selon mode création ou modification -->
+      <div class="add-button-wraper">
+        <button type="submit" [disabled]="taskForm.invalid">
+          {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+        </button>
+      </div>
+    </form>
+    <p class="required"><span class="asterisk">*</span> champs obligatoires</p>
+  </div>
+
+  <a *ngIf="isEditMode" [routerLink]="['/tasks', taskId]">⬅️ Revenir aux
+    détails</a>
 </section>
