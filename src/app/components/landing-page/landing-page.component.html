@@ -1,8 +1,5 @@
 <div class="landing-block">
   <img src="soratodo-logo_500x250.png" alt="soratodo"
         width="500px" height="250px">
-  <div class="landing-links">
-    <button (click)="onContinue()">Continuer vers
-      SoraTodo</button>
-  </div>
+  <a [routerLink]="['tasks']">Continuer vers SoraTodo</a>
 </div>
