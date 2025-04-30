@@ -11,7 +11,7 @@
     {{ successMessage }}
   </div>
   <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
-    <label for="title">Titre :</label>
+    <label for="title">Titre<span class="required asterisk">*</span> :</label>
     <input type="text" id="title" name="title"
            [(ngModel)]="newTask.title" placeholder="Titre" required>
     <label for="description">Description :</label>
@@ -28,4 +28,5 @@
       {{ isEditMode ? 'Modifier' : 'Ajouter' }}
     </button>
   </form>
+  <p class="required"><span class="asterisk">*</span> champs obligatoires</p>
 </section>
