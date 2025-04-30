@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Task} from '../../models/task';
 import {TaskService} from '../../services/task.service';
-import {NgForOf, NgIf, TitleCasePipe} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import {RouterLink} from '@angular/router';
 
 @Component({
@@ -9,7 +9,6 @@ import {RouterLink} from '@angular/router';
   imports: [
     NgForOf,
     NgIf,
-    TitleCasePipe,
     RouterLink
   ],
   templateUrl: './task-list.component.html',

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Task} from '../../models/task';
-import {NgIf, TitleCasePipe} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {TaskService} from '../../services/task.service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 
@@ -8,7 +8,6 @@ import {ActivatedRoute, Router, RouterLink} from '@angular/router';
   selector: 'app-task-detail',
   imports: [
     NgIf,
-    TitleCasePipe,
     RouterLink
   ],
   templateUrl: './task-detail.component.html',
